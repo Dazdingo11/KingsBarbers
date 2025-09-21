@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>King's Barbers</title>
+
+  <!-- CHANGED: use relative path -->
+  <link rel="stylesheet" href="Style.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+
+  <!-- CHANGED: use relative path -->
+  <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body>
+
+<!-- HEADER + HAMBURGER MENU -->
+<header>
+  <nav class="navbar">
+    <div class="logo">King's Barbers</div>
+    <div class="menu-toggle" id="menu-toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#hours">Opening Hours</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>  
+</header>
+
+<!-- HERO VIDEO SECTION -->
+<section id="home" class="hero-section">
+  <video class="background-video" autoplay muted loop playsinline>
+    <!-- CHANGED: use relative path -->
+    <source src="images/Header.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="hero-content">
+    <h1>Welcome to King's Barbers</h1>
+    <p>Live like a King</p>
+    <button onclick="scrollToBooking()">Book Now</button>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about" class="about-section">
+  <div class="about-container">
+    <h2>About Us</h2>
+    <p>Welcome to <strong>King's Barber</strong> — Wellingborough’s home for premium cuts, skinfades, and Turkish barbering.</p>
+    <p>Our skilled barbers combine modern styles with traditional techniques to deliver sharp haircuts, luxury beard trims, and professional grooming.</p>
+    <p>Trusted by the community and rated among the <strong>best barbers in Wellingborough</strong>, we take pride in every cut and every client.</p>
+    <p class="about-cta"><strong>Book your appointment today</strong> and experience true craftsmanship.</p>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+  <div id="learnMoreModal" class="learn-more-modal">
+    <div class="learn-more-content">
+      <button class="close-learn-more" onclick="closeLearnMoreModal()">&times;</button>
+      <h3 id="learnMoreTitle"></h3>
+      <p id="learnMoreDescription"></p>
+    </div>
+  </div>
+  <h2 class="services-title">Our Services</h2>
+  <!-- Scroll Arrows for Desktop -->
+  <button class="our-left-arrow">‹</button>
+  <button class="our-right-arrow">›</button>
+
+  <div id="ourServicesCarousel">
+      <div class="service-card">
+          <!-- CHANGED: relative path -->
+          <video src="images/haircut.mp4" muted loop playsinline></video>
+          <h3>Haircut</h3>
+          <p>£17</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Haircut', 'A fresh, stylish look delivered with precision. Classic barbering done right.\\n\\n• Haircut tailored to your personal style\\n• Quick head rinse if needed\\n• Styling product applied for clean finish')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Skinfade.mp4" muted loop playsinline></video>
+          <h3>Skinfade</h3>
+          <p>£20</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Skinfade', 'Sharp and smooth — modern skinfade precision with clean lines.\\n\\n• Skinfade with smooth blend from skin to top\\n• Line-up and detailing\\n• Optional light styling to finish')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Shave.mp4" muted loop playsinline></video>
+          <h3>Shave</h3>
+          <p>£14</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Shave', 'Classic Turkish straight razor shave — smooth, close, and relaxing.\\n\\n• Hot towel facial steam\\n• Razor shave with expert care\\n• Skin balm to soothe and hydrate')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Haircut %26 Shave.mp4" muted loop playsinline></video>
+          <h3>Haircut & Shave</h3>
+          <p>£28</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Haircut & Shave', 'A true Turkish grooming ritual — classic haircut and shave with hot towels, fire, and massage. Walk out fresh and confident.\\n\\n• Haircut tailored to your personal style\\n• Traditional straight razor shave\\n• Hot towel treatment to soften the skin\\n• Soothing head and neck massage\\n• Fire ear hair removal (Turkish flame stick)')">Learn More</button>
+      </div>
+      <div class="service-card" data-default>
+          <video src="images/Skinfade %26 Shave.mp4" muted loop playsinline></video>
+          <h3>Skinfade & Shave</h3>
+          <p>£31</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Skinfade & Shave', 'Sharp modern fade meets traditional Turkish care. Look clean, feel great.\\n\\n• Skinfade with seamless blend\\n• Razor shave with hot towel prep\\n• Relaxing scalp and neck massage\\n• Fire stick ear hair removal')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/OAP Haircut.mp4" muted loop playsinline></video>
+          <h3>OAP Haircut</h3>
+          <p>£11</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('OAP Haircut', 'Clean, respectful grooming for our senior gents — with care and tradition.\\n\\n• Gentle, classic haircut\\n• Optional rinse and light styling')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/OAP Haircut %26 Shave.mp4" muted loop playsinline></video>
+          <h3>OAP Haircut & Shave</h3>
+          <p>£15</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('OAP Haircut & Shave', 'A full Turkish-style experience — with care and respect for senior comfort.\\n\\n• Gentle haircut\\n• Hot towel shave with razor\\n• Relaxing massage\\n• Fire stick ear hair cleanup')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Boys Haircut.mp4" muted loop playsinline></video>
+          <h3>Boys Haircut (Under 12)</h3>
+          <p>£15</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Boys Haircut (Under 12)', 'Professional haircut for young gentlemen — sharp, stylish, and done with care.\\n\\n• Age-appropriate boys haircut\\n• Clean neck finish\\n• Optional styling for a fresh look')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Boys Skinfade.mp4" muted loop playsinline></video>
+          <h3>Boys Skinfade (Under 12)</h3>
+          <p>£17</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Boys Skinfade (Under 12)', 'Sharp mini-fade for stylish young kings.\\n\\n• Clean skinfade with precision\\n• Quick styling for sharp look')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/All Over Clipper Cut.mp4" muted loop playsinline></video>
+          <h3>All Over Clipper Cut</h3>
+          <p>£13</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('All Over Clipper Cut', 'No fuss, all style — one clipper length, clean and fast.\\n\\n• One-length clipper cut\\n• Neck cleanup and finish')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Face Mask.mp4" muted loop playsinline></video>
+          <h3>Face Mask</h3>
+          <p>£10</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Face Mask', 'Deep cleansing mask for smoother, brighter skin.\\n\\n• Skin-safe charcoal or clay-based mask\\n• Applied and removed in-shop\\n• Refreshes and clears skin')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Eyebrow Threading.mp4" muted loop playsinline></video>
+          <h3>Eyebrow Threading</h3>
+          <p>£7</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Eyebrow Threading', 'Sharp brows in minutes — detailed and clean.\\n\\n• Professional threading for shape and symmetry\\n• No wax, no irritation')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Facial Wax.mp4" muted loop playsinline></video>
+          <h3>Facial Wax</h3>
+          <p>£8</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Facial Wax', 'Clean up nose, upper lip, or cheeks with pro waxing.\\n\\n• Quick wax for stubborn facial hair\\n\\n• Longer-lasting smoothness')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Barber King Full Service.mp4" muted loop playsinline></video>
+          <h3>Barber King Full Service</h3>
+          <p>£45</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Barber King Full Service', 'Our royal experience — everything we offer, in one luxurious Turkish treatment.\\n\\n• Haircut or skinfade of your choice\\n• Full facial wax\\n• Eyebrow threading\\n• Deep cleansing face mask\\n• Hot towel and steam\\n• Massage for scalp and neck\\n• Fire stick ear hair removal')">Learn More</button>
+      </div>
+      <div class="service-card">
+          <video src="images/Wash.mp4" muted loop playsinline></video>
+          <h3>Wash</h3>
+          <p>£5</p>
+          <button class="learn-more-btn" onclick="openLearnMoreModal('Wash', 'Quick rinse to freshen up before or after your service.\\n\\n• Scalp massage with shampoo\\n• Warm rinse and towel dry')">Learn More</button>
+      </div>
+  </div>
+</section>
+
+<!-- OPENING HOURS -->
+<section id="hours">
+  <h2>Opening Hours</h2>
+  <div class="hours-table">
+    <div class="day"><strong>Monday:</strong> 9:00 AM – 6:00 PM</div>
+    <div class="day"><strong>Tuesday:</strong> Closed</div>
+    <div class="day"><strong>Wednesday:</strong> 9:00 AM – 6:00 PM</div>
+    <div class="day"><strong>Thursday:</strong> 9:00 AM – 7:00 PM</div>
+    <div class="day"><strong>Friday:</strong> 9:00 AM – 7:00 PM</div>
+    <div class="day"><strong>Saturday:</strong> 8:00 AM – 6:00 PM</div>
+    <div class="day"><strong>Sunday:</strong> 10:00 AM – 4:00 PM</div>
+  </div>
+</section>
+
+<!-- === BOOKING SECTION === -->
+<section id="book" class="booking-section">
+  <h2 class="section-title">Book an Appointment</h2>
+
+  <form id="bookingForm" class="booking-form" novalidate autocomplete="off">
+    <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="off">
+    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required autocomplete="off">
+    <input type="email" id="email" name="email" placeholder="Email Address" required autocomplete="off">
+    <input type="text" id="bookingDateDisplay" placeholder="Select Date">
+    <input type="hidden" id="bookingDate" name="bookingDate">
+
+    <select id="bookingTime" name="bookingTime" required>
+      <option value="">Select Time</option>
+    </select>    
+
+    <input type="text" id="selectedServiceDisplay" name="selectedService" placeholder="Select Service" readonly onclick="openServiceModal()" required>
+
+    <textarea id="notes" name="notes" placeholder="Any special request?"></textarea>
+    <button type="submit">Confirm Booking</button>
+  </form>
+
+  <div id="bookingSuccessModal" class="booking-success-modal">
+    <div class="booking-success-content">
+      <h3>Appointment Confirmed ✅</h3>
+      <p id="bookingSuccessMessage">Your booking has been received. A confirmation will be sent to your email.</p>
+      <button type="button" class="confirm-success-btn">OK</button>
+    </div>
+  </div>   
+</section>
+
+<!-- === BOOKING SERVICE SELECTOR MODAL === -->
+<div id="serviceModal" class="service-modal">
+  <div class="modal-content">
+    <button class="close-modal-btn" onclick="closeServiceModal()">✕</button>
+    <h2 class="modal-title">Select a Service</h2>
+    <button class="scroll-arrow left-arrow" onclick="scrollModalCarousel('left')">‹</button>
+    <button class="scroll-arrow right-arrow" onclick="scrollModalCarousel('right')">›</button>
+
+    <div class="services-carousel" id="serviceCarousel">
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/haircut.mp4" muted loop playsinline></video>
+        <h3>Haircut</h3>
+        <p>£17</p>
+        <button onclick="confirmService(event, 'Haircut', '£17')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Skinfade.mp4" muted loop playsinline></video>
+        <h3>Skinfade</h3>
+        <p>£20</p>
+        <button onclick="confirmService(event, 'Skinfade', '£20')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Shave.mp4" muted loop playsinline></video>
+        <h3>Shave</h3>
+        <p>£14</p>
+        <button onclick="confirmService(event, 'Shave', '£14')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Haircut %26 Shave.mp4" muted loop playsinline></video>
+        <h3>Haircut & Shave</h3>
+        <p>£28</p>
+        <button onclick="confirmService(event, 'Haircut & Shave', '£28')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Skinfade %26 Shave.mp4" muted loop playsinline></video>
+        <h3>Skinfade & Shave</h3>
+        <p>£31</p>
+        <button onclick="confirmService(event, 'Skinfade & Shave', '£31')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/OAP Haircut.mp4" muted loop playsinline></video>
+        <h3>OAP Haircut</h3>
+        <p>£11</p>
+        <button onclick="confirmService(event, 'OAP Haircut', '£11')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/OAP Haircut %26 Shave.mp4" muted loop playsinline></video>
+        <h3>OAP Haircut & Shave</h3>
+        <p>£15</p>
+        <button onclick="confirmService(event, 'OAP Haircut & Shave', '£15')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Boys Haircut.mp4" muted loop playsinline></video>
+        <h3>Boys Haircut (Under 12)</h3>
+        <p>£15</p>
+        <button onclick="confirmService(event, 'Boys Haircut (Under 12)', '£15')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Boys Skinfade.mp4" muted loop playsinline></video>
+        <h3>Boys Skinfade (Under 12)</h3>
+        <p>£17</p>
+        <button onclick="confirmService(event, 'Boys Skinfade (Under 12)', '£17')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/All Over Clipper Cut.mp4" muted loop playsinline></video>
+        <h3>All Over Clipper Cut</h3>
+        <p>£13</p>
+        <button onclick="confirmService(event, 'All Over Clipper Cut', '£13')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Face Mask.mp4" muted loop playsinline></video>
+        <h3>Face Mask</h3>
+        <p>£10</p>
+        <button onclick="confirmService(event, 'Face Mask', '£10')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Eyebrow Threading.mp4" muted loop playsinline></video>
+        <h3>Eyebrow Threading</h3>
+        <p>£7</p>
+        <button onclick="confirmService(event, 'Eyebrow Threading', '£7')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Facial Wax.mp4" muted loop playsinline></video>
+        <h3>Facial Wax</h3>
+        <p>£8</p>
+        <button onclick="confirmService(event, 'Facial Wax', '£8')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Barber King Full Service.mp4" muted loop playsinline></video>
+        <h3>Barber King Full Service</h3>
+        <p>£45</p>
+        <button onclick="confirmService(event, 'Barber King Full Service', '£45')">Select</button>
+      </div>
+
+      <div class="service-card" onclick="selectServiceCard(this)">
+        <video src="images/Wash.mp4" muted loop playsinline></video>
+        <h3>Wash</h3>
+        <p>£5</p>
+        <button onclick="confirmService(event, 'Wash', '£5')">Select</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY SECTION -->
+<section id="gallery" class="gallery-section">
+  <h2 class="section-title">Gallery</h2>
+  <div class="gallery-container">
+    <button class="gallery-nav left">❮</button>
+    <div class="gallery-track">
+      <!-- CHANGED: relative paths -->
+      <img src="images/Review_1.jpg" alt="Style 1" class="gallery-image">
+      <img src="images/Review_2.jpg" alt="Style 2" class="gallery-image">
+      <img src="images/Review_3.jpg" alt="Style 3" class="gallery-image">
+      <img src="images/Review_4.jpg" alt="Style 4" class="gallery-image">
+      <img src="images/Review_5.jpg" alt="Style 5" class="gallery-image">
+      <img src="images/Review_6.jpg" alt="Style 6" class="gallery-image">
+      <img src="images/Review_7.jpg" alt="Style 7" class="gallery-image">
+      <img src="images/Review_8.jpg" alt="Style 8" class="gallery-image">
+      <img src="images/Review_9.jpg" alt="Style 9" class="gallery-image">
+    </div>
+    <button class="gallery-nav right">❯</button>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <h2 class="section-title">Contact Us</h2>
+  <div class="social-links">
+    <a href="https://www.facebook.com/kingsbarberwellingborough" target="_blank">
+      <!-- CHANGED: relative paths -->
+      <img src="images/facebook-icon.png" alt="Facebook" class="social-icon">
+    </a>
+    <a href="https://www.instagram.com/kingsbarber_wellingborough/" target="_blank">
+      <img src="images/instagram-icon.png" alt="Instagram" class="social-icon">
+    </a>
+  </div>
+  <p><strong>Phone:</strong> <a href="tel:01933551722">01933 551722</a></p>
+  <p><strong>Address:</strong> Kings barber, 33 Market St, Wellingborough NN8 1AT, United Kingdom</p>
+  <div class="map-container">
+    <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2431.014614707637!2d-0.6919857!3d52.3021515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877a1658d2c8d43%3A0x69f3180ffc154c07!2s33%20Market%20St%2C%20Wellingborough%20NN8%201AT%2C%20UK!5e0!3m2!1sen!2suk!4v1714752600000!5m2!1sen!2suk" 
+    width="100%" 
+    height="250" 
+    frameborder="0" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>     
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms & Conditions</a>
+  </div>
+  <p>© 2025 King's Barbers. All rights reserved.</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- CHANGED: relative path -->
+<script src="script.js" defer></script>
+</body>
+</html>
