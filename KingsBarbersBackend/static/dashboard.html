@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Barber Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .filter-bar input, .filter-bar select {
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #333;
+      color: #00ffae;
+    }
+
+    tr:nth-child(even) {
+      background-color: #1a1a1a;
+    }
+
+    tr:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>📋 Barber Dashboard</h1>
+
+  <div class="filter-bar">
+    <input type="text" id="searchName" placeholder="Search by name..." />
+    <input type="date" id="filterDate" />
+    <select id="filterService">
+      <option value="">All Services</option>
+    </select>
+  </div>
+
+  <table id="bookingTable">
+    <thead>
+      <tr>
+        <th>Date</th><th>Time</th><th>Name</th><th>Service</th><th>Email</th><th>Reference</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    let allBookings = [];
+
+    function renderTable(bookings) {
+      const tbody = document.querySelector('#bookingTable tbody');
+      tbody.innerHTML = '';
+      bookings.forEach(b => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${b.bookingDate}</td>
+          <td>${b.bookingTime}</td>
+          <td>${b.name}</td>
+          <td>${b.selectedService}</td>
+          <td>${b.email}</td>
+          <td>${b.reference}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function applyFilters() {
+      const name = document.getElementById("searchName").value.toLowerCase();
+      const date = document.getElementById("filterDate").value;
+      const service = document.getElementById("filterService").value;
+
+      const filtered = allBookings.filter(b => {
+        return (
+          (name === "" || b.name.toLowerCase().includes(name)) &&
+          (date === "" || b.bookingDate === date) &&
+          (service === "" || b.selectedService === service)
+        );
+      });
+
+      renderTable(filtered);
+    }
+
+    fetch('/api/bookings')
+      .then(res => res.json())
+      .then(bookings => {
+        allBookings = bookings;
+        renderTable(allBookings);
+
+        // Populate service dropdown
+        const serviceSet = new Set(bookings.map(b => b.selectedService));
+        const filterService = document.getElementById("filterService");
+        serviceSet.forEach(service => {
+          const option = document.createElement("option");
+          option.value = service;
+          option.textContent = service;
+          filterService.appendChild(option);
+        });
+      });
+
+    document.getElementById("searchName").addEventListener("input", applyFilters);
+    document.getElementById("filterDate").addEventListener("change", applyFilters);
+    document.getElementById("filterService").addEventListener("change", applyFilters);
+  </script>
+</body>
+</html>
